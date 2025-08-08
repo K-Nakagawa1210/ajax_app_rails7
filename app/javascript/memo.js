@@ -4,7 +4,7 @@ function post (){
   e.preventDefault();
   const formData = new FormData(form);
   const XHL = new XMLHttpRequest();
-  XHL.open("POST", "/post", true);
+  XHL.open("POST", "/posts", true);
   XHL.responseType = "json";
   XHL.send(formData);
  });
