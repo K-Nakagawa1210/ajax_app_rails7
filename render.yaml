@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ajax-app-rails7
+    env: ruby
+    plan: free
+    branch: master
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ajax-app-db
+          property: connectionString
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_MASTER_KEY
+        sync: false  # Renderのダッシュボードから設定
+
+databases:
+  - name: ajax-app-db
+    plan: free
